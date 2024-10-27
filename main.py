@@ -41,7 +41,6 @@ def get_author_by_id(
         db: Session = Depends(get_db),
 ):
     author = crud.get_author_by_id(db=db, id=id)
-
     if author is None:
         raise HTTPException(status_code=404, detail="Author not found")
     return author
