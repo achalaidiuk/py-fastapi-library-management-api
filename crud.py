@@ -17,7 +17,7 @@ def get_authors(db: Session, skip: int = 0, limit: int = 10):
 def get_author_by_id(db: Session, author_id: int):
     return db.query(DBAuthor).filter(DBAuthor.id == author_id).first()
 
-def create_book(db: Session, author: schemas.BookCreate):
+def create_book(db: Session, book: schemas.BookCreate):
     db_book = DBBook(**book.dict())
     db.add(db_book)
     db.commit()
@@ -27,5 +27,5 @@ def create_book(db: Session, author: schemas.BookCreate):
 def get_books(db: Session, skip: int = 0, limit: int = 10):
     return db.query(DBBook).offset(skip).limit(limit).all()
 
-def get_book_by_id(db: Session, author_id: int):
-    return db.query(DBBook).filter(DBBook.author_id == author_id).first()
+def get_book_by_id(db: Session, book_id: int):
+    return db.query(DBBook).filter(DBBook.author_id == book_id).first()
