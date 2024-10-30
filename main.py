@@ -61,6 +61,7 @@ def get_book_by_id(id: int, db: Session = Depends(get_db)):
             status_code=404,
             detail="Book not found"
         )
+
     return book
 
 
